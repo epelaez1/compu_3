@@ -11,8 +11,5 @@ def create_random_letters() -> dict[str, str]:
 def main(message: str, key: dict[str, str]) -> str:
     final_message: list[str] = []
     for letter in message:
-        if letter in key:
-            final_message.append(key[letter])
-            continue
-        final_message.append(key[letter])
+        final_message.append(key.get(letter, letter))
     return ''.join(final_message)
