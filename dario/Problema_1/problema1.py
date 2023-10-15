@@ -11,8 +11,5 @@ def key_gen() -> dict[str, str]:
 def encryptor(men: str, key: dict[str, str]) -> str:
     encryp = []
     for letter in men:
-        if letter in key.keys():
-            encryp.append(key[letter])
-        else:
-            encryp.append(letter)
+        encryp.append(key.get(letter, letter))
     return ''.join(encryp)
