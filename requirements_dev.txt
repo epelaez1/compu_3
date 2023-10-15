@@ -1,0 +1,3 @@
+mypy
+wemake-python-styleguide
+pytest
