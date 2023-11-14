@@ -10,12 +10,12 @@ def get_products_and_prices() -> list[Product]:
     name: str = ''
     price: int = 0
     discount: int = 0
-    while input('Continue? (yes/no): ') == 'yes':
-        name = input('Name: ')
-        price = int(input('Price: '))
-        ask_discount = input('It have discount? (yes/no): ') == 'yes'
+    while input('Continue? (yes/no): ') == 'yes':  # noqa: WPS110
+        name = input('Name: ')  # noqa: WPS110
+        price = int(input('Price: '))  # noqa: WPS110
+        ask_discount = input('It have discount? (yes/no): ') == 'yes'  # noqa: WPS110
         if ask_discount:
-            discount = int(input('What discount?: '))
+            discount = int(input('What discount?: '))  # noqa: WPS110
         products_and_prices.append(Product(name, price, discount))
     return products_and_prices
 
