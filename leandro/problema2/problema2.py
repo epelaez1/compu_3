@@ -5,33 +5,31 @@ class Product:
 
 
 def ask_product_name() -> str:
-    return input("Product's name: ")  # noqa: WPS110
+    return input("Product's name: ")  # noqa: WPS110, WPS421
 
 
 def ask_product_price() -> float:
-    return float(input("Product's price: "))  # noqa: WPS110
+    return float(input("Product's price: "))  # noqa: WPS110, WPS421
 
 
 def ask_products() -> list[Product]:
     products_list = []
-    while input("do you want to add more? ").lower() == "yes":  # noqa: WPS110
+    while input('do you want to add more? ').lower() == 'yes':  # noqa: WPS110, WPS421
         products_list.append(Product(ask_product_name(), ask_product_price()))
     return products_list
 
 
 def sum_prices(products: list[Product]) -> float:
-    ticket_price: float = 0
-    for product in products:
-        ticket_price += product.price
-    return ticket_price
+    return sum([product.price for product in products])
 
 
 def apply_iva(ticket_price: float, list_products: list[Product]) -> float:
-    return sum_prices(list_products) * 1.21
+    iva = 1.21
+    return sum_prices(list_products) * iva
 
 
 def ask_discount() -> float:
-    return float(input('Discount: '))  # noqa: WPS110
+    return float(input('Discount: '))  # noqa: WPS110, WPS421
 
 
 def apply_discount(price_with_iva: float, discount: float) -> float:
@@ -41,10 +39,10 @@ def apply_discount(price_with_iva: float, discount: float) -> float:
 
 def print_ticket(products_list: list[Product], ticket_price: float, price_with_iva: float, final_price: float) -> None:
     for product in products_list:
-        print(product.name, " : ", product.price)
-    print(f"total price : {ticket_price:.{2}f}€")
-    print(f"price with IVA : {price_with_iva:.{2}f}€")
-    print(f"price after discount : {final_price:.{2}f}€")
+        print(product.name, ' : ', product.price)  # noqa: WPS421
+    print(f'total price : {ticket_price:.{2}f}€')  # noqa: WPS305, WPS421
+    print(f'price with IVA : {price_with_iva:.{2}f}€')  # noqa: WPS305, WPS421
+    print(f'price after discount : {final_price:.{2}f}€')  # noqa: WPS305, WPS421
 
 
 def main() -> None:
